@@ -1,55 +1,37 @@
+import { useSelector } from 'react-redux'
+
 import Tarefa from '../../components/Tarefa'
 import { Container } from './styles'
+import { RootReducer } from '../../store'
 
-const tarefas = [
-  {
-    titulo: 'estudar CSS',
-    descricao: 'Ver aula 3',
-    prioridade: 'importante',
-    status: 'pendente'
-  },
-  {
-    titulo: 'estudar HTML',
-    descricao: 'Ver aula 3',
-    prioridade: 'importante',
-    status: 'pendente'
-  },
-  {
-    titulo: 'estudar REACT',
-    descricao: 'Ver aula 3',
-    prioridade: 'importante',
-    status: 'pendente'
-  },
-  {
-    titulo: 'estudar VUE',
-    descricao: 'Ver aula 3',
-    prioridade: 'importante',
-    status: 'pendente'
-  },
-  {
-    titulo: 'estudar SASS',
-    descricao: 'Ver aula 3',
-    prioridade: 'importante',
-    status: 'pendente'
+const ListaDeTarefas = () => {
+  const { itens } = useSelector((state: RootReducer) => state.tarefas)
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
+
+  const filtraTarefas = () => {
+    return itens.filter(
+      (item) => item.titulo.toLowerCase().search(termo.toLowerCase()) >= 0
+    )
   }
-]
-
-const ListaDeTarefas = () => (
-  <Container>
-    <p>2 tarefas marcadas como: &quot;categoria&quot; e &quot;termo&quot;</p>
-    <ul>
-      {tarefas.map((t) => (
-        <li key={t.titulo}>
-          <Tarefa
-            descricao={t.descricao}
-            titulo={t.titulo}
-            status={t.status}
-            prioridade={t.prioridade}
-          />
-        </li>
-      ))}
-    </ul>
-  </Container>
-)
-
+  return (
+    <Container>
+      <p>
+        2 tarefas marcadas como: &quot;categoria&quot; e &quot;{termo}&quot;
+      </p>
+      <ul>
+        {filtraTarefas().map((t) => (
+          <li key={t.titulo}>
+            <Tarefa
+              id={t.id}
+              descricao={t.descricao}
+              titulo={t.titulo}
+              status={t.status}
+              prioridade={t.prioridade}
+            />
+          </li>
+        ))}
+      </ul>
+    </Container>
+  )
+}
 export default ListaDeTarefas
