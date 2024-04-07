@@ -10,17 +10,17 @@ const initialState: TarefasState = {
   itens: [
     {
       id: 1,
-      descricao: 'Estudar JS modulo 12',
+      descricao: 'Estudar JavaScript modulo 12',
       prioridade: enums.Prioridade.NORMAL,
       status: enums.Status.CONCLUIDA,
-      titulo: 'Estudar JS'
+      titulo: 'Estudar JavaScript'
     },
     {
       id: 2,
-      descricao: 'Estudar CSS modulo 12',
+      descricao: 'Estudar TypeScript modulo 12',
       prioridade: enums.Prioridade.NORMAL,
       status: enums.Status.PENDENTE,
-      titulo: 'Estudar CSS'
+      titulo: 'Estudar TypeScript'
     },
     {
       id: 3,
