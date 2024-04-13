@@ -6,7 +6,7 @@ import * as enums from '../../utils/enums/tarefa'
 
 import { remover, editar, alteraStatus } from '../../store/reducers/tarefas'
 import TarefaClass from '../../models/Tarefa'
-import { BotaoSalvar } from '../../styles'
+import { Botao, BotaoSalvar } from '../../styles'
 
 type Props = TarefaClass
 
@@ -91,7 +91,7 @@ const Tarefa = ({
           </>
         ) : (
           <>
-            <S.Botao onClick={() => setEstaEditando(true)}>Editar</S.Botao>
+            <Botao onClick={() => setEstaEditando(true)}>Editar</Botao>
             <S.BotaoCancelarRemover onClick={() => dispatch(remover(id))}>
               Remover
             </S.BotaoCancelarRemover>
@@ -103,6 +103,3 @@ const Tarefa = ({
 }
 
 export default Tarefa
-function forceUpdate() {
-  throw new Error('Function not implemented.')
-}
